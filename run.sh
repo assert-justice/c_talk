@@ -1,2 +1,2 @@
 #!bash
-./build.sh && ./hello.exe
+bash build.sh && ./hello.out
