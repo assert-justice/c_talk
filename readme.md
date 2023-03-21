@@ -126,7 +126,9 @@ b = 20;
 console.log(`${c}`);
 ```
 
-Well `printf("%i\n", c);` is what we have in C. Frankly, dealing with strings in C is a real pain in the butt and I'm not going to touch on it much in this talk. `%i` is how we tell the compiler we want to print an integer in that part of the string. Don't forget the trailing newline!
+Well `printf("%i\n", c);` is what we have in C. `%i` is how we tell the compiler we want to print an integer in that part of the string. Don't forget the trailing newline!
+
+That `%i` is called a format specifier and there are a whole bunch of them in C, for printing all sorts of numbers, characters, strings, pointers, and what have you. Frankly, dealing with strings in C is a real pain in the butt and I'm not going to touch on it much in this talk but we will see some of those format specifiers come up.
 
 Integers are whole numbers. On most modern operating systems an `int` is specifically an unsigned `32` bit integer. What the heck does that mean?
 
@@ -253,6 +255,34 @@ int main(){
 ```
 
 ## Pointers
+
+```c
+#include <stdio.h>
+
+int main(){
+    int a = 5;
+    int* ap = &a;
+    printf("%i\n", a);
+    printf("%p\n", ap);
+    return 0;
+}
+```
+
+```c
+#include <stdio.h>
+
+int main(){
+    int a = 5;
+    int* ap = &a;
+    int b = *ap;
+    printf("%i\n", a);
+    printf("%p\n", ap);
+    a++;
+    printf("%i\n", b);
+    printf("%i\n", *ap);
+    return 0;
+}
+```
 
 inc
 
