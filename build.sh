@@ -1,2 +1,2 @@
 #!bash
-gcc -Wall -Wextra hello.c -o hello.out
+gcc -Wall -Wextra doubler.c temp.c -o hello.out

@@ -174,9 +174,39 @@ Finally we'll see examples of `void` and `NULL` later.
 
 doubler
 
-summer
+```c
+#include <stdio.h>
 
-greeter & string formatting
+int doubler(int x){
+    return x * 2;
+}
+
+int main(){
+    int a = doubler(5);
+    printf("%i\n", a);
+    return 0;
+}
+```
+
+### Forward Declare
+
+Alternately with a forward declare
+
+```c
+#include <stdio.h>
+
+int doubler(int x);
+
+int main(){
+    int a = doubler(5);
+    printf("%i\n", a);
+    return 0;
+}
+
+int doubler(int x){
+    return x * 2;
+}
+```
 
 ## Arrays
 
@@ -202,15 +232,70 @@ You'll notice a few major differences from JS. Starting with the first line:
 
 Here we are specifying an array of integers. We specify its an array with brackets *after* the variable name.
 
+### Summer
+
+```c
+#include <stdio.h>
+
+int summer(int nums[], int len){
+    int total = 0;
+    for(int i = 0; i < len; i++){
+        total += nums[i];
+    }
+    return total;
+}
+
+int main(){
+    int nums[] = {3, 5, 6, 11, 2};
+    printf("%i\n", summer(nums, 5));
+    return 0;
+}
+```
+
 ## Pointers
 
 inc
 
+```c
+#include <stdio.h>
+
+void inc(int* xp){
+    (*xp)++;
+}
+
+int main(){
+    int a = 5;
+    inc(&a);
+    printf("%i\n", a);
+    return 0;
+}
+```
+
 double_all
+
+```c
+#include <stdio.h>
+
+void double_all(int* nums, int len){
+    for(int i = 0; i < len; i++){
+        nums[i] *= 2;
+    }
+}
+
+int main(){
+    int len = 5;
+    int nums[] = {3, 5, 6, 11, 2};
+    double_all(nums, len);
+    for(int i = 0; i < len; i++){
+        printf("%i\n", nums[i]);
+    }
+    return 0;
+}
+```
 
 ## Structs
 
-## simple macros and headers
+## Simple Macros and Headers
 
 include, define, headers, and header guards
 
