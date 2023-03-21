@@ -21,18 +21,18 @@ static int* allocate(size_t capacity){
 
 static void initArray(dArray* arr){
     arr->length = 0;
-    arr->capacity = INITIAL_SIZE;
-    arr->data = allocate(INITIAL_SIZE);
+    arr->capacity = 0;
+    arr->data = NULL;// allocate(INITIAL_SIZE);
 }
 
 static void freeArray(dArray* arr){
-    free(arr->data);
+    if(arr->data != NULL) free(arr->data);
 }
 
 static void pushArray(dArray* arr, int val){
     if(arr->length == arr->capacity){
         // change capacity
-        size_t newCapacity = arr->capacity * GROW_RATE;
+        size_t newCapacity = arr->capacity == 0 ? INITIAL_SIZE : arr->capacity * GROW_RATE;
         int* newData = allocate(newCapacity);
         memcpy(newData, arr->data, arr->capacity * sizeof(int));
         free(arr->data);
@@ -60,6 +60,9 @@ static void printArray(dArray* arr){
         }
         printf("%i\n", arr->data[arr->length - 1]);
     }
+    int cap = (int)arr->capacity;
+    int len = (int)arr->length;
+    printf("len: %i, capacity: %i\n", len, cap);
 }
 
 #endif
